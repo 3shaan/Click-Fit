@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     min-height: 80vh;
-    padding: 40px;
+    /* padding: 40px; */
     background-image: url(../Assets/running.jpg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -16,6 +16,7 @@
     position: relative;
     width: 100%;
     max-width: 50%;
+    padding-left: 6rem;
 }
 .hero-content h3{
     margin: 0;
@@ -53,11 +54,14 @@
     transform: all 0.3s;
 }
 
-.hero-container .btn:hover{
+/* .hero-container .btn:hover{
     background-position: right center;
-}
+} */
 
 @media only screen and (max-width: 700px) {
+  .hero-content{
+    padding-left: 10px;
+  }
     .hero-content h1{
         font-size: 2rem;
     }

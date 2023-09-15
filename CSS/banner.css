@@ -1,0 +1,52 @@
+.hero-container{
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    padding: 40px;
+    background-image: url(../Assets/running.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.hero-content{
+    position: relative;
+    width: 100%;
+    max-width: 50%;
+}
+.hero-content h1{
+    margin-bottom: 1rem;
+    font-size: 2.6rem;
+}
+.hero-content p{
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.hero-container .btn{
+    display: inline-block;
+    padding: 15px 40px;
+    color: white;
+    background: linear-gradient(to right, #0d89cb 0%, #0d47ba 50%, #0f3b92 100%);
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: capitalize;
+    box-sizing: 0 4px 6px rgba(50, 50, 93, 0.1);
+    transform: all 0.3s;
+}
+
+.hero-container .btn:hover{
+    background-position: right center;
+}
+
+@media only screen and (max-width: 700px) {
+    .hero-content h1{
+        font-size: 2rem;
+    }
+}

@@ -17,9 +17,21 @@
     width: 100%;
     max-width: 50%;
 }
+.hero-content h3{
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 300;
+}
 .hero-content h1{
-    margin-bottom: 1rem;
+    margin: 0;
     font-size: 2.6rem;
+}
+
+.hero-content hr{
+    width: 50px;
+    height: 3px;
+    background-color: red;
+    position: absolute;
 }
 .hero-content p{
     margin-bottom: 20px;

@@ -1,0 +1,23 @@
+.about-us{
+    margin-top: 2rem;
+    /* display: flex;
+    justify-content: space-evenly; */
+    padding: 0 20px;
+}
+
+.gallery{
+    position: relative;
+    width: 50%;
+}
+
+.gallery img{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.gallery .pic2{
+    position: absolute;
+    bottom: 60;
+    left: 160;
+}

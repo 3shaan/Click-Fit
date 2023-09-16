@@ -40,4 +40,14 @@
   .dropzone-wrapper.dragover {
     background: #ecf0f5;
   }
-  
+.drag-over{
+    border: 2px dashed green;
+  }
+
+
+#information{
+  padding: 2rem;
+}
+#information p{
+  margin: 3px;
+}

@@ -1,6 +1,7 @@
-const dropZone = document.getElementById('dropzone');
+const dropZone = document.getElementById('drop-area');
 const fileInput = document.getElementById('fileInput');
 const messageDiv = document.getElementById('message');
+const dropBox = document.getElementById('drop-box');
 
 
 
@@ -14,50 +15,102 @@ $(document).ready(function(){
         this.classList.toggle('active');
       });
     
+      $.ajax({
+        url:"http://numbersapi.com/1/30/date?json",
+        method:"GET",
+        dataType:"json",
+        success:function(data){
+            console.log(data)
+            handleData(data);
+        },
+        error:function(jqHXR, textStatus, error){
+            console.log("Error", textStatus, error)
+        }
+      })
+
+      const handleData = (data)=>{
+        $('#information').append(`
+        <p>Text:${data?.text}</p>
+        <p>Type:${data?.type}</p>
+        <p>Number:${data?.number}</p>
+        <p>Years:${data?.year}</p>
+        <p>Found:${data?.found}</p>
+        
+        `)
+      }
 
 })
 
 
 
-
 dropZone.addEventListener('dragover', (e) => {
     e.preventDefault();
-    dropZone.classList.add('drag-over');
+    console.log('dragover')
+    dropBox.classList.add('drag-over');
 });
 
-dropZone.addEventListener('dragleave', () => {
-    dropZone.classList.remove('drag-over');
+dropZone.addEventListener('dragleave', (e) => {
+    console.log('drag Leave')
+    e.preventDefault();
+    dropBox.classList.remove('drag-over');
 });
 
 dropZone.addEventListener('drop', (e) => {
+    console.log('drop ')
     e.preventDefault();
-    dropZone.classList.remove('drag-over');
+    dropBox.classList.remove('drag-over');
     const files = e.dataTransfer.files;
     handleFiles(files);
 });
 
+// console.log(fileInput)
 fileInput.addEventListener('change', () => {
     const files = fileInput.files;
     handleFiles(files);
 });
 
+
+// Additional event listeners for window to prevent file opening by browser
+window.addEventListener('dragover', (e) => {
+    e.preventDefault();
+});
+
+window.addEventListener('drop', (e) => {
+    e.preventDefault();
+});
+
+document.addEventListener('dragenter', (e) => {
+    e.preventDefault();
+    dropZone.classList.add('drag-over');
+});
+
+document.addEventListener('dragleave', (e) => {
+    e.preventDefault();
+    dropZone.classList.remove('drag-over');
+});
+
+
 function handleFiles(files) {
+    console.log('files',files);
     for (const file of files) {
         uploadFile(file);
     }
 }
 
 function uploadFile(file) {
+    console.log("file", file)
     const formData = new FormData();
     formData.append('image', file);
+    console.log('formData',formData)
 
-    fetch('/upload', {
+    fetch('http://localhost:3000/', {
         method: 'POST',
         body: formData,
     })
     .then((response) => response.json())
     .then((data) => {
         messageDiv.textContent = data.message;
+        console.log('data', data)
     })
     .catch((error) => {
         console.error('Error:', error);

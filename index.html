@@ -89,22 +89,30 @@
   <!-- ajax api call and image drag and drop -->
   <section class="image-upload">
     <div>
-      <form action="" method="post" enctype="multipart/form-data">
+      <h1>Upload Images of your sports workout</h1>
+      <form id="drop-area"  method="post" enctype="multipart/form-data">
         <label class="upload">Upload File</label>
-        <div class="dropzone">
+        <div id="drop-box" class="dropzone">
           <div class="dropzone-desc">
             <i class="fa-solid fa-download"></i>
             <p>Choose an image file or drag it here.</p>
           </div>
-           <input type="file" name="img_logo" class="fileInput">
+           <input type="file" name="image" id="fileInput">
         </div>
       </form>
-      <p class="message"></p>
+      <p id="message"></p>
+    </div>
+  </section>
+  <section id="information">
+    <h1>Workout Information</h1>
+    <div>
+      
     </div>
   </section>
 
+
+  <script src="https://kit.fontawesome.com/165bdfaad6.js" crossorigin="anonymous"></script>
   <script src="JS/JQuary.js"></script>
   <script src="JS/main.js"></script>
-  <script src="https://kit.fontawesome.com/165bdfaad6.js" crossorigin="anonymous"></script>
 </body>
 </html>

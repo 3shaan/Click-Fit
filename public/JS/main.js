@@ -43,7 +43,7 @@ $(document).ready(function(){
 
       aboutUs.forEach(about=>{
         $(".about-box").append(`
-        <div class="about-card">
+        <div class="about-card" style="--index:${about?.id}">
         <i class="${about.icon}"></i>
         <h4>${about.title}</h4>
         <p>${about.desc}</p>

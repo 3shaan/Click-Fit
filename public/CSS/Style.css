@@ -45,6 +45,10 @@ nav ul li a:visited {
   color: #fff;
   background: #262626;
   text-decoration: none;
+  transition: all 0.3s;
+  opacity: 0;
+  animation: fadeUp 0.5s linear forwards;
+  animation-delay: calc(0.3s * var(--index));
 }
 nav ul li a {
   margin-top: 0.5rem;
@@ -154,3 +158,14 @@ nav ul li a:visited:not(:only-child):after {
   }
 }
 
+
+@keyframes fadeUp{
+  from{
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to{
+    opacity: 100%;
+    transform: translateY(0);
+  }
+}

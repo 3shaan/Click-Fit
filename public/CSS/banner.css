@@ -1,7 +1,7 @@
 .hero-container {
   position: relative;
   width: 100%;
-  min-height: 80vh;
+  min-height: 90vh;
   /* padding: 40px; */
   background-image: url(../Assets/running.jpg);
   background-size: 100% 100%;
@@ -21,10 +21,14 @@
   margin: 0;
   font-size: 2rem;
   font-weight: 300;
+  opacity: 0;
+  animation: fadeUp 0.5s linear 0.5s forwards ;
 }
 .hero-content h1 {
   margin: 0;
   font-size: 2.6rem;
+  opacity: 0;
+  animation: fadeUp 0.5s linear 1.5s forwards ;
 }
 
 .hero-content hr {
@@ -32,11 +36,15 @@
   height: 3px;
   background-color: blue;
   position: absolute;
+  opacity: 0;
+  animation: fadeUp 0.5s linear 2s forwards ;
 }
 .hero-content p {
   margin-bottom: 20px;
   font-size: 18px;
   font-weight: 400;
+  opacity: 0;
+  animation: fadeUp 0.5s linear 2.5s forwards ;
 }
 
 .hero-container .btn {
@@ -51,6 +59,8 @@
   text-transform: capitalize;
   box-sizing: 0 4px 6px rgba(50, 50, 93, 0.1);
   transform: all 0.3s;
+  opacity: 0;
+  animation: fadeUp 0.5s linear 3s forwards ;
 }
 
 .hero-container .btn:hover {

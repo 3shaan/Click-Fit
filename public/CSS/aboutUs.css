@@ -23,20 +23,23 @@
   text-align: center;
   margin-bottom: 0;
   text-align: center;
+  opacity: 0;
+  animation: fadeUp 0.5s linear 0.5s forwards ;
 }
 
 .content hr {
   width: 9rem;
   height: 3px;
   background-color: blue;
+  opacity: 0;
+  animation: fadeUp 0.5s linear 0.7s forwards ;
 }
-.content p {
+.content p:nth-of-type(1) {
   font-size: 18px;
+  opacity: 0;
+  animation: fadeUp 0.5s linear 0.9s forwards ;
 }
 
-.content ul li {
-  margin: 10px 0 10px 0;
-}
 
 .about-box {
   display: grid;
@@ -52,6 +55,9 @@
   padding: 1rem;
   border-radius: 10px;
   margin: 0 auto;
+  opacity: 0;
+  animation: fadeUp 1s linear forwards;
+  animation-delay: calc(0.3s * var(--index));
 }
 .about-card i {
   font-size: 3rem;

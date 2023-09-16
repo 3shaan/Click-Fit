@@ -1,0 +1,77 @@
+#about-us{
+    margin: 1rem 1rem;
+}
+
+#about-us h1{
+    font-size: 2rem;
+    text-align: center;
+}
+
+#about-us hr {
+    width: 9rem;
+    height: 3px;
+    background-color: blue;
+  }
+
+
+#card-group{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 1rem;
+}
+
+.card {
+    width: 300px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    transition: background-color 0.5s, transform 0.3s;
+  }
+  
+  /* .card:hover {
+    background: linear-gradient(to left, #ff5733, #6bb9f0); /
+    transform: scale(1.05);
+  } */
+  
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .card img:hover{
+    transform: scale(1.05);
+    transition: ease-in-out 0.5s ;
+  }
+  
+  .card-content {
+    padding: 20px;
+  }
+  
+  .card-content h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .card-content p {
+    margin: 0;
+    padding: 0;
+    color: #666;
+  }
+
+
+  @media only screen and (max-width: 700px){
+    #card-group{
+      grid-template-columns: auto;
+
+    }
+  }
+
+  @media only screen and (max-width: 1275px) and (min-width:701px){
+    #card-group{
+      grid-template-columns: auto auto;
+
+    }
+  }

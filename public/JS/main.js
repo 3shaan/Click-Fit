@@ -30,14 +30,39 @@ $(document).ready(function(){
 
       const handleData = (data)=>{
         $('#information').append(`
-        <p>Text:${data?.text}</p>
-        <p>Type:${data?.type}</p>
-        <p>Number:${data?.number}</p>
-        <p>Years:${data?.year}</p>
-        <p>Found:${data?.found}</p>
+        <p>Text: ${data?.text}</p>
+        <p>Type: ${data?.type}</p>
+        <p>Number: ${data?.number}</p>
+        <p>Years: ${data?.year}</p>
+        <p>Found: ${data?.found}</p>
         
         `)
       }
+
+      //about us section 
+
+      aboutUs.forEach(about=>{
+        $(".about-box").append(`
+        <div class="about-card">
+        <i class="${about.icon}"></i>
+        <h4>${about.title}</h4>
+        <p>${about.desc}</p>
+      </div>
+        `)
+      })
+
+      //Card group 
+     services.forEach(service=>{
+        $("#card-group").append(`
+        <div class="card">
+          <img src="${service?.image}" alt="Image">
+          <div class="card-content">
+            <h2>${service.title}</h2>
+            <p>${service.desc}</p>
+          </div>
+        </div>
+        `)
+     })
 
 })
 
@@ -98,7 +123,7 @@ function handleFiles(files) {
 }
 
 function uploadFile(file) {
-    console.log("file", file)
+    console.log("file-main", file)
     const formData = new FormData();
     formData.append('image', file);
     console.log('formData',formData)

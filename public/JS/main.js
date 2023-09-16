@@ -20,7 +20,7 @@ $(document).ready(function(){
         method:"GET",
         dataType:"json",
         success:function(data){
-            console.log(data)
+            // console.log(data)
             handleData(data);
         },
         error:function(jqHXR, textStatus, error){
@@ -103,7 +103,7 @@ function uploadFile(file) {
     formData.append('image', file);
     console.log('formData',formData)
 
-    fetch('http://localhost:3000/', {
+    fetch('/upload', {
         method: 'POST',
         body: formData,
     })

@@ -4,13 +4,17 @@ const path = require('path');
 const cors= require('cors')
 const bodyParser = require("body-parser");
 const app = express();
-app.use(cors());
 const PORT = process.env.PORT || 3000;
 
+
+// middlewares
+app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));  // access all file in public folder
+
 
 // File upload folder
-const UPLOADS_FOLDER = "../upload_images/";
+const UPLOADS_FOLDER = "./upload_images/";
 
 
 
@@ -37,9 +41,19 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// app.use(express.static(path.join(__dirname, 'public')));
 
-app.post('/', upload.single('image'), (req, res) => {
+
+//router start
+
+//get the html file
+app.get('/', (req,res)=>{
+  res.sendFile(__dirname + '/public/index.html');
+})
+
+
+
+// upload images routes
+app.post('/upload', upload.single('image'), (req, res) => {
     console.log(req.file)
     if (!req.file) {
         return res.status(400).json({ message: 'No file uploaded' });
@@ -62,6 +76,7 @@ app.use((err, req, res, next) => {
   });
 
 
+// server lister 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

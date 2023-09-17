@@ -47,3 +47,48 @@
 #information p {
   margin: 3px;
 }
+
+#gallery{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 4rem;
+}
+
+#gallery img{
+  width: 20rem;
+  height: 20rem;
+}
+
+
+
+.toast{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+   display: none;
+}
+.toast p{
+  background-color: #1009dc;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 13px;
+ 
+}
+
+
+@media only screen and (max-width: 700px){
+  #gallery{
+    grid-template-columns: auto;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (min-width:701px) {
+  #gallery{
+    grid-template-columns: auto auto;
+  }
+}

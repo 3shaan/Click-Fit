@@ -62,11 +62,54 @@ $(document).ready(function(){
           </div>
         </div>
         `)
+     });
+
+
+     // show uploaded images
+     $.ajax({
+        url:"/getImages",
+        method:"GET",
+        dataType:"json",
+        success: function(imagesFileName){
+            // console.log(imagesFileName)
+            $(".img-text").append(`
+            <p>${imagesFileName.length >0 ? "Uploaded Images" :"Your don't have any uploaded images"}</p>
+            `)
+            imagesFileName.forEach(function(fileName){
+
+                $('#gallery').append(`
+                <img src="${fileName}"></img>
+                `)
+
+                // const img = document.createElement('img');
+                // img.src =url;
+                // $('#gallery').append(img);
+
+            })
+        },
+        error: function (error) {
+            console.error('Error fetching image file names:', error);
+          }
      })
 
 })
 
 
+//toast show function
+
+function showToast() {
+    var toast = document.getElementById("toast");
+    
+    toast.style.display = "flex"; // Show the toast
+    
+    setTimeout(function () {
+        toast.style.display = "none"; // Hide the toast after 2 seconds
+    }, 2000);
+}
+
+
+
+// drag and drop start
 
 dropZone.addEventListener('dragover', (e) => {
     e.preventDefault();
@@ -136,9 +179,25 @@ function uploadFile(file) {
     .then((data) => {
         messageDiv.textContent = data.message;
         console.log('data', data)
+        showToast()
     })
     .catch((error) => {
         console.error('Error:', error);
     });
 }
 
+
+// show images from images_upload folder
+
+// fetch('/getImages')
+// .then(response => response.json())
+// .then(imageUrls => {
+//     console.log(imageUrls)
+//   const container = document.getElementById('image-container');
+//   imageUrls.forEach(url => {
+//     const img = document.createElement('img');
+//     img.src =url;
+//     container.appendChild(img);
+   
+//   });
+// });

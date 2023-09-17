@@ -3,6 +3,7 @@ const multer = require('multer');
 const path = require('path');
 const cors= require('cors')
 const bodyParser = require("body-parser");
+const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -11,6 +12,8 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));  // access all file in public folder
+
+app.use(express.static(path.join(__dirname, 'upload_images')));
 
 
 // File upload folder
@@ -24,7 +27,7 @@ const storage = multer.diskStorage({
     cb(null, UPLOADS_FOLDER);
   },
   filename: (req, file, cb) => {
-    console.log('file-server', file)
+    // console.log('file-server', file)
     const fileExt = path.extname(file.originalname);
     const fileName =
       file.originalname
@@ -54,12 +57,39 @@ app.get('/', (req,res)=>{
 
 // upload images routes
 app.post('/upload', upload.single('image'), (req, res) => {
-    console.log(req.file)
+    // console.log(req.file)
     if (!req.file) {
         return res.status(400).json({ message: 'No file uploaded' });
     }
     return res.status(200).json({ message: 'Image uploaded successfully' });
 });
+
+// get all the images 
+
+app.get('/getImages',async(req,res)=>{
+  const imageFileNames = [];
+  
+  fs.readdir(UPLOADS_FOLDER,(err, files)=>{
+    // console.log('file',files)
+    if(err){
+      console.error('Error reading image files:', err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+    const imageFiles = files.filter((file) =>
+      imageExtensions.includes(path.extname(file).toLowerCase())
+    );
+
+    // console.log('ex',imageFiles)
+
+    // push images file to array
+    imageFiles.forEach(file=>{
+      imageFileNames.push(file);
+    });
+    res.status(200).json(imageFileNames);
+  })
+})
 
 
 // default error handler

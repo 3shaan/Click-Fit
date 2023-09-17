@@ -32,4 +32,4 @@ DELIMITER ;
 
 -- call add user to store the data 
 
-CALL addUser('user@example.com', 'password123', 'regular');
+CALL addUser('3shan.bd@gmail.com', 'password123', 'regular');

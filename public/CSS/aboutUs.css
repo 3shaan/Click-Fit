@@ -51,24 +51,36 @@
   flex-direction: column;
   width: 15rem;
   text-align: center;
-  background-color: rgb(228, 221, 221);
+  background: linear-gradient(90deg, #4a9efe, #3174c1);
   padding: 1rem;
   border-radius: 10px;
   margin: 0 auto;
+  position: relative;
+  transition: background-position 0.3s ease-in-out;
+  background-size: 200% 100%; 
   opacity: 0;
   animation: fadeUp 1s linear forwards;
   animation-delay: calc(0.3s * var(--index));
+  color: #fff;
 }
+
+.about-box:hover{
+  background-position: 200% 0; 
+}
+
+
 .about-card i {
   font-size: 3rem;
-  color: gray;
+  color: #fff;
 }
 .about-card p {
   margin: 2px;
+
 }
 .about-card h4 {
   font-size: 1.3rem;
   margin: 2px;
+
 }
 
 @media only screen and (max-width: 700px) {
